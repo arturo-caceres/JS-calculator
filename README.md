@@ -1,3 +1,3 @@
 # Calculator
 
-![image](./assets/calc.png)
+![calculator](./assets/calc.png)
