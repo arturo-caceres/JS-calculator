@@ -1,0 +1,96 @@
+@use './partials/palette';
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@font-face {
+  font-family: lcdSolid;
+  src: url('./assets/LcdSolid-VPzB.ttf');
+}
+
+@font-face {
+  font-family: digitalMono;
+  src: url('./assets/Digital7Mono-B1g5.ttf');
+}
+
+#main {
+  height: 574px;
+  width: 449px;
+  padding: 20px;
+  background-color: palette.$primary-color;
+  @include flex-col;
+}
+
+.main-top {
+  background-color: #2a2a2a;
+  height: 165px;
+  @include flex-col;
+
+  &-title {
+    color: #ada28e;
+    border-bottom: 2px solid #7a323a;
+    font-family: lcdSolid;
+    font-size: large;
+    padding: 20px 15px 15px;
+    margin: 0;
+  }
+
+  &-screen {
+    flex: 1;
+    border: 10px solid black;
+    border-left: 10px solid grey;
+    margin: 15px;
+    @include flex-col;
+    font-family: digitalMono;
+  }
+
+  .eval-screen {
+    background-color: #817b5e;
+    border: 10px solid #88897b;
+    flex: 1;
+    text-align: right;
+    font-size: xxx-large;
+  }
+}
+
+.main-bottom {
+  flex: 1;
+  background-color: #ddc5a1;
+  @include flex-col;
+  padding: 8px 0px;
+
+  .row {
+    flex: 1;
+    @include flex-row;
+
+    .button {
+      background: linear-gradient(
+        90deg,
+        rgba(64, 63, 62, 1) 0%,
+        rgba(43, 43, 42, 1) 99%
+      );
+      color: white;
+      flex: 1;
+      border: 8px solid #303133;
+      margin: 8px 10px;
+      border-radius: 6px;
+      font-size: x-large;
+
+      &-clear {
+        background: #e98051;
+      }
+
+      &-equal {
+        flex: 2.8;
+        background: #615c48;
+      }
+    }
+  }
+}
