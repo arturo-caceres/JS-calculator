@@ -10,7 +10,7 @@
 - Show numbers in display -yes
 - Make dot button work -yes
 - Show dot in display -yes
-- Making Operators work
-- Show operators in display
+- Making Operators work - yes
+- Show operators in display - yes
 - Implement equal sign
 - Showing calculation

@@ -44,6 +44,7 @@
   flex: 1;
   text-align: right;
   font-size: xxx-large;
+  font-family: digitalMono;
 }
 
 .main-bottom {
@@ -66,6 +67,11 @@
   margin: 8px 10px;
   border-radius: 6px;
   font-size: x-large;
+}
+.main-bottom .row .button:active {
+  border: 8px solid rgb(28, 28, 28);
+  background-color: white;
+  color: black;
 }
 .main-bottom .row .button-clear {
   background: #e98051;
