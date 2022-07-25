@@ -1,24 +1,40 @@
+let calculation = null;
+let justCalculated = false;
+
+function calculate(leftOperand, operator, rightOperand) {
+  switch (operator) {
+    case '+':
+      return parseFloat(leftOperand) + parseFloat(rightOperand);
+      break;
+
+    case '–':
+      return parseFloat(leftOperand) - parseFloat(rightOperand);
+      break;
+
+    case '÷':
+      return parseFloat(leftOperand) / parseFloat(rightOperand);
+      break;
+
+    case 'x':
+      return parseFloat(leftOperand) * parseFloat(rightOperand);
+      break;
+  }
+}
+
 //Adding Clear button
 const clearButton = document.getElementById('clear');
-console.log(clearButton);
-
 clearButton.addEventListener('click', () => {
-  console.log('Clear');
-
   const inputText = document.getElementById('inputText');
-  console.log(inputText);
-
+  calculation = null;
+  justCalculated = false;
   inputText.value = 0;
 });
 
 //
 //Adding Dot button
 const dotButton = document.getElementById('dot');
-console.log(dotButton);
 
 dotButton.addEventListener('click', () => {
-  console.log('.');
-
   const inputText = document.getElementById('inputText');
 
   if (inputText.value === '0') {
@@ -27,45 +43,81 @@ dotButton.addEventListener('click', () => {
     inputText.value = inputText.value + '.';
   }
 });
+//
 
 //
 // Adding Number buttons
 const numberButtons = document.querySelectorAll('.number');
-console.log(numberButtons);
-
 for (let i = 0; i < numberButtons.length; i++) {
   const numberButton = numberButtons[i];
-  console.log(numberButton);
 
   numberButton.addEventListener('click', () => {
     const numberValue = numberButton.innerHTML;
-    console.log(numberValue);
 
-    if (inputText.value === '0') {
+    const lastChar = inputText.value[inputText.value.length - 1];
+
+    if (justCalculated) {
+      inputText.value = numberValue;
+      justCalculated = false;
+    } else if (inputText.value === '0') {
+      inputText.value = numberValue;
+    } else if (
+      lastChar === '+' ||
+      lastChar === '–' ||
+      lastChar === 'x' ||
+      lastChar === '÷'
+    ) {
+      calculation = inputText.value;
       inputText.value = numberValue;
     } else {
       inputText.value = inputText.value + numberValue;
     }
-
-    console.log(inputText);
   });
 }
 
 //
 //Adding Operator buttons
 const operatorButtons = document.querySelectorAll('.operator');
-console.log(operatorButtons);
-
 for (let i = 0; i < operatorButtons.length; i++) {
   const operatorButton = operatorButtons[i];
-  console.log(operatorButton);
-
   operatorButton.addEventListener('click', () => {
+    justCalculated = false;
     const operatorValue = operatorButton.innerHTML;
-    console.log(operatorValue);
-
-    if (inputText.value === '0') {
-      inputText.value = '0.';
+    let lastChar = inputText.value[inputText.value.length - 1];
+    if (
+      lastChar === '+' ||
+      lastChar === '–' ||
+      lastChar === 'x' ||
+      lastChar === '÷'
+    ) {
+      inputText.value =
+        inputText.value.substring(0, inputText.value.length - 1) +
+        operatorValue;
+    } else if (calculation != null) {
+      const leftOperand = calculation.substring(0, calculation.length - 1);
+      const rightOperand = inputText.value;
+      const operator = calculation.substring(calculation.length - 1);
+      inputText.value =
+        calculate(leftOperand, operator, rightOperand) + operatorValue;
+    } else {
+      inputText.value = inputText.value + operatorValue;
     }
   });
 }
+
+//
+// Adding Equal button
+const equalButton = document.getElementById('equal');
+equalButton.addEventListener('click', () => {
+  if (calculation != null && inputText.value.length > 0) {
+    //calculo
+
+    const leftOperand = calculation.substring(0, calculation.length - 1);
+    const rightOperand = inputText.value;
+    const operator = calculation.substring(calculation.length - 1);
+    let result = calculate(leftOperand, operator, rightOperand);
+    justCalculated = true;
+    inputText.value = result;
+    calculation = null;
+  }
+});
