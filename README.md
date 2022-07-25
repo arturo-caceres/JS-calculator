@@ -4,13 +4,13 @@
 
 ### Breakdown
 
-- Implent clear button - yes
-- Show 0 at display - yes
-- Make Number buttons work - yes
-- Show numbers in display -yes
-- Make dot button work -yes
-- Show dot in display -yes
-- Making Operators work - yes
-- Show operators in display - yes
+- Implent clear button
+- Show 0 at display
+- Make Number buttons work
+- Show numbers in display
+- Make dot button work
+- Show dot in display
+- Making Operators work
+- Show operators in display
 - Implement equal sign
 - Showing calculation
