@@ -3,7 +3,16 @@
 
 ## https://retro-calculator-js.netlify.app/
 
-![calculator](./assets/calc.png)
+
+## Purpose 
+
+The purpose of this project is to create a calculator using Javascript with the help of HTML and SCSS.
+
+## Tech stack
+- **Javascript**
+- **HTML** 
+- **SCSS** 
+
 
 ### Breakdown
 
@@ -17,3 +26,5 @@
 - Show operators in display
 - Implement equal sign
 - Showing calculation
+
+![calculator](./assets/calc.png)
